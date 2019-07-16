@@ -1,0 +1,5 @@
+---
+# handlers file for CloudWatchAgent
+- name: start_agent
+  shell: /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:{{ conf_file_dir }}/conf.yml -s
+  become: yes

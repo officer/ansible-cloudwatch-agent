@@ -1,0 +1,15 @@
+---
+# tasks file for CloudWatchAgent
+- name: "CloudWatch Agent | Install"
+  yum:
+    name: https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+    state: present
+
+- name: "CloudWatch Agent | Copy config file to remote machine"
+  copy: 
+    src: conf.yml
+    dest: {{ conf_file_dir }}/conf.yml
+    owner: remote_user
+    mode: '0755'
+  become: yes
+  notify: start_agent
