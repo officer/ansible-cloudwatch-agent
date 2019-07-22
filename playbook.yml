@@ -1,4 +1,0 @@
-- hosts: all
-  user: ec2-user
-  roles:
-    - CloudWatchAgent
