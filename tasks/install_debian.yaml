@@ -1,0 +1,15 @@
+- name: "CloudWatch Agent | Install"
+  apt:
+    deb: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+  become: yes
+
+- name: "CloudWatch Agent | Copy config file to remote machine"
+  copy: 
+    src: conf_ubuntu.yml
+    dest: "{{ conf_file_dir }}/conf.yml"
+    owner: "{{ cwa_user }}"
+    mode: '0755'
+  become: yes
+  notify: 
+    - stop_agent
+    - start_agent
