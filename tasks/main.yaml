@@ -1,0 +1,8 @@
+---
+# tasks file for CloudWatchAgent
+- name: "CloudWatch Agent | Install dependencies"
+  include_tasks: dependencies.yaml
+
+- name: "CloudWatch Agent | Install Agent"
+  include_tasks: install.yaml 
+ 
