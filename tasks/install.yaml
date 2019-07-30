@@ -1,0 +1,32 @@
+- name: "CloudWatch Agent | Install"
+  apt:
+    deb: https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+  become: yes
+  when: ansible_distribution == 'Ubuntu'
+
+- name: "CloudWatch Agent | Install"
+  apt:
+    deb: https://s3.amazonaws.com/amazoncloudwatch-agent/debian/amd64/latest/amazon-cloudwatch-agent.deb
+  become: yes
+  when: ansible_distribution == 'Debian'
+
+- name: "CloudWatch Agent | Install"
+  yum:
+    name: https://s3.amazonaws.com/amazoncloudwatch-agent/rhel/amd64/latest/amazon-cloudwatch-agent.rpm
+    state: present
+  become: yes
+  when: ansible_distribution == 'Red Hat Enterprise Linux'
+
+- name: "CloudWatch Agent | Install"
+  yum:
+    name: https://s3.amazonaws.com/amazoncloudwatch-agent/centos/amd64/latest/amazon-cloudwatch-agent.rpm
+    state: present
+  become: yes
+  when: ansible_distribution == 'CentOS'
+
+- name: "CloudWatch Agent | Install"
+  yum:
+    name: https://s3.amazonaws.com/amazoncloudwatch-agent/amazon_linux/amd64/latest/amazon-cloudwatch-agent.rpm
+    state: present
+  become: yes
+  when: ansible_distribution == 'Amazon'

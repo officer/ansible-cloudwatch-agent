@@ -1,8 +1,11 @@
 ---
 # tasks file for CloudWatchAgent
+- name: "CloudWatch Agent | Create CWA User"
+  include_tasks: pre_install.yaml 
+
 - name: "CloudWatch Agent | Install dependencies"
   include_tasks: dependencies_rhel.yaml
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Amazon'
 
 - name: "CloudWatch Agent | Install dependencies"
   include_tasks: dependencies_debian.yaml
@@ -10,10 +13,8 @@
 
 
 - name: "CloudWatch Agent | Install Agent"
-  include_tasks: install_rhel.yaml 
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+  include_tasks: install.yaml 
 
-- name: "CloudWatch Agent | Install Agent"
-  include_tasks: install_debian.yaml 
-  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+- name: "CloudWatch Agent | Place setting files"
+  include_tasks: place_files.yaml 
 

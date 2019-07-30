@@ -1,0 +1,23 @@
+- name: "CloudWatch Agent | Copy config file to remote machine"
+  copy: 
+    src: conf_fedora.yml
+    dest: "{{ conf_file_dir }}/conf.yml"
+    owner: "{{ cwa_user }}"
+    mode: '0755'
+  become: yes
+  notify: 
+    - stop_agent
+    - start_agent
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Amazon'
+
+- name: "CloudWatch Agent | Copy config file to remote machine"
+  copy: 
+    src: conf_fedora.yml
+    dest: "{{ conf_file_dir }}/conf.yml"
+    owner: "{{ cwa_user }}"
+    mode: '0755'
+  become: yes
+  notify: 
+    - stop_agent
+    - start_agent
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

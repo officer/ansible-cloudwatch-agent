@@ -1,4 +1,4 @@
 ---
 # vars file for CloudWatchAgent
 conf_file_dir: /opt
-cwa_user: ubuntu
+cwa_user: cw_agent
