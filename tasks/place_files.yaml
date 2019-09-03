@@ -6,8 +6,8 @@
     mode: '0755'
   become: yes
   notify: 
-    - stop_agent
-    - start_agent
+    - "CloudWatch Agent | Stop"
+    - "CloudWatch Agent | Start"
   when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' or ansible_distribution == 'Amazon'
 
 - name: "CloudWatch Agent | Copy config file to remote machine"
@@ -18,6 +18,6 @@
     mode: '0755'
   become: yes
   notify: 
-    - stop_agent
-    - start_agent
+    - "CloudWatch Agent | Stop"
+    - "CloudWatch Agent | Start"
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
